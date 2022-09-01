@@ -42,6 +42,9 @@ class authController {
       }
       const hashPassword = bcrypt.hashSync(password, 7); // Создаем переменную с захэшированным паролем. 1-параметр: пароль пользователя; 2-параметр: степень хэширования
       const userRole = await Role.findOne({ value: "USER" }); // Задаем роль для пользователя
+      // const userRole = await Role.find({
+      //   $or: [{ value: "USER" }, { value: "ADMIN" }],
+      // }); // Задаем роль для пользователя
       const user = new User({
         username,
         password: hashPassword,
